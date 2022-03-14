@@ -6,6 +6,7 @@ import com.simulator.server.service.impl.MatchServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,8 +19,9 @@ public class MatchController {
 
     private final MatchService matchService;
 
-    @GetMapping("/getMatchesByTeam")
-    public List<Match> findByTeam(int id){
+    @GetMapping("/getMatchesByTeam/{id}")
+    public List<Match> findByTeam(@PathVariable("id") int id){
+
         return matchService.findByTeam(id);
     }
 }
